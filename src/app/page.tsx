@@ -1,5 +1,8 @@
-import { Button } from "@/components/ui/button";
+import SliderCarousel from "@/components/custom/SliderCarousel";
+
 
 export default function Home() {
-	return <div className="">hello</div>;
+	return <div className="">
+		<SliderCarousel />
+	</div>;
 }
