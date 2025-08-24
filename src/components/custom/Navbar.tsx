@@ -86,11 +86,13 @@ const Navbar: FC<NavbarProps> = ({}) => {
 			<nav className="bg-[#1A233B] text-white h-20 flex items-center justify-between px-6">
 				{/* Left Section */}
 				<div className="flex items-center space-x-8">
+					<button onClick={toggleMenu}>
 					<Menu
 						className="h-6 w-6 cursor-pointer"
-						onClick={toggleMenu}
+					
 					/>
-					<div className="w-[1px] h-20 bg-white/20"></div>
+					</button>
+						<div className="w-[1px] h-20 bg-white/20"></div>
 					<div className="flex flex-col  space-x-2">
 						<sup className="font-serif text-sm italic">Approved by.</sup>
 						<span className="text-sm font-medium  font-sans uppercase tracking-widest">Devendra Fadnavis</span>
@@ -108,10 +110,11 @@ const Navbar: FC<NavbarProps> = ({}) => {
 				{/* Right Section */}
 				<div className="flex items-center space-x-8">
 					<div className="w-[1px] h-20 bg-white/20"></div>
-					<Search
-						className="h-6 w-6 cursor-pointer"
-						onClick={toggleSearch}
-					/>
+					<button onClick={toggleSearch}>
+						<Search
+							className="h-6 w-6 cursor-pointer"
+						/>
+					</button>
 					<div className="w-[1px] h-20 bg-white/20"></div>
 					<Image
 						src="/police_logo.png"
@@ -175,8 +178,8 @@ const Navbar: FC<NavbarProps> = ({}) => {
 								<Image
 									src="/police_logo.png"
 									alt="logo"
-									width={100}
-									height={100}
+									width={500}
+									height={500}
 								/>
 							</div>
 						</div>

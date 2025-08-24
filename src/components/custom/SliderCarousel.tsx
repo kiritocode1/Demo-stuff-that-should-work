@@ -15,19 +15,19 @@ const slides: CarouselSlide[] = [
 		id: 1,
 		title: "HONORING",
 		subtitle: "OUR VETS",
-		image: "/police_logo.png",
+		image: "/carousel/1.png",
 	},
 	{
 		id: 2,
 		title: "SERVING",
 		subtitle: "OUR COMMUNITY",
-		image: "/globe.svg",
+		image: "/carousel/2.png",
 	},
 	{
 		id: 3,
 		title: "PROTECTING",
 		subtitle: "OUR FUTURE",
-		image: "/window.svg",
+		image: "/carousel/3.png",
 	},
 ];
 
@@ -80,14 +80,14 @@ const SliderCarousel: FC = () => {
 			{/* Navigation Arrows */}
 			<button
 				onClick={prevSlide}
-				className="absolute left-6 bottom-20 z-20 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+				className="absolute left-6 bottom-32 z-20 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
 			>
 				<ChevronLeft className="w-6 h-6 text-white" />
 			</button>
 
 			<button
 				onClick={nextSlide}
-				className="absolute right-6 bottom-20 z-20 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
+				className="absolute right-6 bottom-32 z-20 w-12 h-12 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white/30 transition-all duration-300"
 			>
 				<ChevronRight className="w-6 h-6 text-white" />
 			</button>
@@ -98,7 +98,7 @@ const SliderCarousel: FC = () => {
 					<button
 						key={index}
 						onClick={() => setCurrentSlide(index)}
-						className={`h-3 rounded-full transition-all duration-500 ${index === currentSlide ? "w-12 bg-transparent border-2 border-white" : "w-3 bg-white/40 hover:bg-white/60"}`}
+						className={`h-3 rounded-full transition-all duration-500 ${index === currentSlide ? "w-20 bg-transparent border-2 border-white" : "w-6 bg-white/40 hover:bg-white/60"}`}
 					/>
 				))}
 			</div>
