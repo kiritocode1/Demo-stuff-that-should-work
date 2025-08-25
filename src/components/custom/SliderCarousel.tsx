@@ -2,13 +2,18 @@
 
 import { FC, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
-
+import { Roboto_Serif } from "next/font/google";
 interface CarouselSlide {
 	id: number;
 	title: string;
 	subtitle: string;
 	image: string;
 }
+
+const robotoSerif = Roboto_Serif({
+	weight: ["400", "700"],
+	subsets: ["latin"],
+});
 
 const slides: CarouselSlide[] = [
 	{
@@ -72,8 +77,8 @@ const SliderCarousel: FC = () => {
 			{/* Content */}
 			<div className="relative z-10 flex flex-col justify-center items-center h-full text-white">
 				<div className="text-center space-y-4 animate-fade-in">
-					<h1 className="text-6xl font-serif font-bold tracking-wider">{slides[currentSlide].title}</h1>
-					<h2 className="text-5xl font-serif font-bold tracking-wider">{slides[currentSlide].subtitle}</h2>
+					<h1 className={`text-6xl ${robotoSerif.className} font-bold tracking-wider`}>{slides[currentSlide].title}</h1>
+					<h2 className={`text-5xl ${robotoSerif.className} font-bold tracking-wider`}>{slides[currentSlide].subtitle}</h2>
 				</div>
 			</div>
 

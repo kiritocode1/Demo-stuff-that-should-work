@@ -4,6 +4,7 @@ import { FC, useState } from "react";
 import { Menu, Search, X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { Button } from "../ui/button";
 
 export interface NavbarProps {
 	title?: string;
@@ -187,7 +188,7 @@ const Navbar: FC<NavbarProps> = ({}) => {
 						{/* Footer */}
 						<div className="p-6 border-t border-white/20">
 							<div className="flex justify-between items-center">
-								<button className="bg-red-600 text-white px-6 py-3 font-medium hover:bg-red-700 transition-colors">JOIN NOW</button>
+								<Button className="bg-red-600 text-white px-6 py-3 font-medium hover:bg-red-700 transition-colors" onClick={() => window.open("tel:112", "_blank")}>Call 112 Now</Button>
 								<p className="text-white/70 text-sm">© 2024 Nashik Rural Police</p>
 							</div>
 						</div>
