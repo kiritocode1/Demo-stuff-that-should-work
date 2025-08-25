@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "@/hooks/useTranslations";
+import { Facebook, Instagram, Twitter } from "lucide-react";
 
 function NewsletterSignup() {
 	const { t } = useTranslations();
@@ -77,9 +78,15 @@ function SiteFooter() {
 					<p className="text-white/80">{t("footer.address1")}</p>
 					<p className="text-white/80">{t("footer.address2")}</p>
 					<div className="flex items-center gap-4 pt-2">
-						<div className="w-6 h-6 rounded-full bg-white/20" />
-						<div className="w-6 h-6 rounded-full bg-white/20" />
-						<div className="w-6 h-6 rounded-full bg-white/20" />
+                        <div className="w-6 h-6 rounded-full bg-white/20" >
+                        <Facebook/>
+                        </div>
+                        <div className="w-6 h-6 rounded-full bg-white/20" >
+                            <Instagram />
+                            </div>
+						<div className="w-6 h-6 rounded-full bg-white/20" >
+                            <Twitter/>
+                            </div>
 					</div>
 				</div>
 			</div>
@@ -88,7 +95,7 @@ function SiteFooter() {
 				<div className="max-w-7xl mx-auto px-4 py-6 flex items-center justify-between text-sm text-white/80">
 					<span>{t("footer.copyright")}</span>
 					<div className="flex items-center gap-8">
-						<span>WH.GOV</span>
+						<span>Nashik Rural Police</span>
 						<span>{t("footer.privacy")}</span>
 					</div>
 				</div>
