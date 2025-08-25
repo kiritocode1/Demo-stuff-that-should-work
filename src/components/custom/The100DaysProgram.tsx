@@ -1,19 +1,18 @@
 const The100DaysProgram = () => {
 	return (
-		<div className="bg-slate-900 py-16">
+		<div className="bg-slate-900 py-20">
 			<div className="max-w-7xl mx-auto px-4">
 				<div className="grid grid-cols-[63%_auto] gap-8 items-center">
 					{/* Left side - Image with fade effect */}
 					<figure className="relative">
 						<div
-							className="w-full h-[400px] bg-cover bg-center rounded-lg"
+							className="w-full h-[500px] bg-cover bg-center rounded-lg"
 							style={{
 								backgroundImage: `url('/100_days.png')`,
 								maskImage: "linear-gradient(to right, black 0%, transparent 100%)",
 								WebkitMaskImage: "linear-gradient(to right, black 0%, transparent 100%)",
 							}}
 						></div>
-
 					</figure>
 
 					{/* Right side - Content */}
