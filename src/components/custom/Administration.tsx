@@ -30,7 +30,7 @@ const Administration: FC = () => {
 	];
 
 	return (
-		<div className="bg-[#0D132D] min-h-screen ">
+		<div className="bg-[#0D132D] ">
 			{/* Main Title */}
 			<div className="text-center mb-12">
 				<h1 className="text-white text-4xl font-serif font-bold">The Administration</h1>
