@@ -1,4 +1,10 @@
+"use client";
+
+import { useTranslations } from "@/hooks/useTranslations";
+
 const The100DaysProgram = () => {
+	const { t } = useTranslations();
+
 	return (
 		<div className="bg-slate-900 py-20">
 			<div className="max-w-7xl mx-auto px-4">
@@ -17,13 +23,10 @@ const The100DaysProgram = () => {
 
 					{/* Right side - Content */}
 					<div className="text-white">
-						<h2 className="text-4xl font-bold mb-6 font-serif uppercase italic">THE 100 Days Police Program</h2>
-						<p className="text-lg mb-8 leading-relaxed">
-							The Nasik Police Department is committed to ensuring public safety, reducing crime rates, strengthening community relations, enhancing emergency response capabilities, and
-							creating a secure environment for all citizens through our comprehensive 100-day initiative.
-						</p>
+						<h2 className="text-4xl font-bold mb-6 font-serif uppercase italic">{t("program100Days.title")}</h2>
+						<p className="text-lg mb-8 leading-relaxed">{t("program100Days.description")}</p>
 						<div className="inline-block">
-							<button className="border-2 border-white text-white px-8 py-3 rounded hover:bg-white hover:text-slate-900 transition-colors">READ MORE</button>
+							<button className="border-2 border-white text-white px-8 py-3 rounded hover:bg-white hover:text-slate-900 transition-colors">{t("program100Days.readMore")}</button>
 						</div>
 					</div>
 				</div>

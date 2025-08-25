@@ -2,9 +2,11 @@
 
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const GridPicture = () => {
 	const gridRef = useRef<HTMLDivElement>(null);
+	const { t } = useTranslations();
 
 	useEffect(() => {
 		if (gridRef.current) {
@@ -43,7 +45,7 @@ const GridPicture = () => {
 						</div>
 						<div className="absolute inset-0 flex items-center justify-center">
 							<h3 className="text-white text-4xl font-serif relative">
-								Executive Actions
+								{t("gridPicture.executiveActions")}
 								<span className="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300" />
 							</h3>
 						</div>
@@ -61,7 +63,7 @@ const GridPicture = () => {
 						</div>
 						<div className="absolute inset-0 flex items-center justify-center">
 							<h3 className="text-white text-4xl font-serif relative">
-								News
+								{t("gridPicture.news")}
 								<span className="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300" />
 							</h3>
 						</div>
@@ -79,7 +81,7 @@ const GridPicture = () => {
 						</div>
 						<div className="absolute inset-0 flex items-center justify-center">
 							<h3 className="text-white text-4xl font-serif relative">
-								Gallery
+								{t("gridPicture.gallery")}
 								<span className="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300" />
 							</h3>
 						</div>
@@ -97,7 +99,7 @@ const GridPicture = () => {
 						</div>
 						<div className="absolute inset-0 flex items-center justify-center">
 							<h3 className="text-white text-4xl font-serif relative">
-								Videos
+								{t("gridPicture.videos")}
 								<span className="absolute bottom-0 left-0 h-0.5 bg-white w-0 group-hover:w-full transition-all duration-300" />
 							</h3>
 						</div>

@@ -1,29 +1,33 @@
+"use client";
 import { FC } from "react";
 import Image from "next/image";
+import { useTranslations } from "@/hooks/useTranslations";
 
 const Administration: FC = () => {
+	const { t } = useTranslations();
+
 	const administrationMembers = [
 		{
-			name: "Shri. Devendra Fadnavis",
-			role: "Hon'ble Chief Minister, Maharashtra State",
+			nameKey: "administration.members.cm.name",
+			roleKey: "administration.members.cm.role",
 			image: "/administration/cm.png",
 			alt: "Shri. Devendra Fadnavis",
 		},
 		{
-			name: "Smt. Rashmi Shukla (IPS)",
-			role: "DGP, Maharashtra State",
+			nameKey: "administration.members.dgp.name",
+			roleKey: "administration.members.dgp.role",
 			image: "/administration/dgp.png",
 			alt: "Smt. Rashmi Shukla",
 		},
 		{
-			name: "Shri. Dattatray Karale (IPS)",
-			role: "Sp. Inspector General of Police, Nashik Range",
+			nameKey: "administration.members.dig.name",
+			roleKey: "administration.members.dig.role",
 			image: "/administration/dgp-2.png",
 			alt: "Shri. Dattatray Karale",
 		},
 		{
-			name: "Shri. Balasaheb Patil (IPS)",
-			role: "Superintendent of Police, Nashik Rural",
+			nameKey: "administration.members.sp.name",
+			roleKey: "administration.members.sp.role",
 			image: "/administration/ips.png",
 			alt: "Shri. Balasaheb Patil",
 		},
@@ -33,7 +37,7 @@ const Administration: FC = () => {
 		<div className="bg-[#0D132D] ">
 			{/* Main Title */}
 			<div className="text-center mb-12">
-				<h1 className="text-white text-4xl font-serif font-bold">The Administration</h1>
+				<h1 className="text-white text-4xl font-serif font-bold">{t("administration.title")}</h1>
 			</div>
 
 			{/* Four Panel Grid */}
@@ -55,8 +59,8 @@ const Administration: FC = () => {
 
 						{/* Text Section */}
 						<div className="p-6 text-center">
-							<h3 className="text-white text-xl font-serif font-bold mb-2 uppercase">{member.name}</h3>
-							<p className="text-white/90 text-sm font-sans uppercase ">{member.role}</p>
+							<h3 className="text-white text-xl font-serif font-bold mb-2 uppercase">{t(member.nameKey)}</h3>
+							<p className="text-white/90 text-sm font-sans uppercase ">{t(member.roleKey)}</p>
 						</div>
 					</div>
 				))}

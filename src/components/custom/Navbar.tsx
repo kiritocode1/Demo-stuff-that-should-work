@@ -1,10 +1,12 @@
 "use client";
 
 import { FC, useState } from "react";
-import { Menu, Search, X } from "lucide-react";
+import { Menu, Search, X, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { Button } from "../ui/button";
+import { useQueryState } from "nuqs";
+import { useTranslations } from "@/hooks/useTranslations";
 
 export interface NavbarProps {
 	title?: string;
@@ -55,9 +57,15 @@ const Navbar: FC<NavbarProps> = ({}) => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
 	const [isSearchOpen, setIsSearchOpen] = useState(false);
 	const [searchQuery, setSearchQuery] = useState("");
+	const [language, setLanguage] = useQueryState("lang", { defaultValue: "en" });
+	const { t } = useTranslations();
 
 	const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 	const toggleSearch = () => setIsSearchOpen(!isSearchOpen);
+
+	const handleLanguageChange = (newLang: string) => {
+		setLanguage(newLang);
+	};
 
 	const handleSearch = () => {
 		if (searchQuery.trim()) {
@@ -73,13 +81,13 @@ const Navbar: FC<NavbarProps> = ({}) => {
 	};
 
 	const navItems = [
-		{ heading: "About the Nashik Rural Police", href: "#" },
-		{ heading: "The Administration", href: "#" },
-		{ heading: "Executive Offices", href: "#" },
-		{ heading: "First Family", href: "#" },
-		{ heading: "History & Grounds", href: "#" },
-		{ heading: "Tours & Events", href: "#" },
-		{ heading: "Contact Us", href: "#" },
+		{ heading: t("navbar.navItems.about"), href: "#" },
+		{ heading: t("navbar.navItems.administration"), href: "#" },
+		{ heading: t("navbar.navItems.executiveOffices"), href: "#" },
+		{ heading: t("navbar.navItems.firstFamily"), href: "#" },
+		{ heading: t("navbar.navItems.historyGrounds"), href: "#" },
+		{ heading: t("navbar.navItems.toursEvents"), href: "#" },
+		{ heading: t("navbar.navItems.contactUs"), href: "#" },
 	];
 
 	return (
@@ -88,23 +96,20 @@ const Navbar: FC<NavbarProps> = ({}) => {
 				{/* Left Section */}
 				<div className="flex items-center space-x-8">
 					<button onClick={toggleMenu}>
-					<Menu
-						className="h-6 w-6 cursor-pointer"
-					
-					/>
+						<Menu className="h-6 w-6 cursor-pointer" />
 					</button>
-						<div className="w-[1px] h-20 bg-white/20"></div>
+					<div className="w-[1px] h-20 bg-white/20"></div>
 					<div className="flex flex-col  space-x-2">
-						<sup className="font-serif text-sm italic">Approved by.</sup>
-						<span className="text-sm font-medium  font-sans uppercase tracking-widest">Devendra Fadnavis</span>
+						<sup className="font-serif text-sm italic">{t("navbar.approvedBy")}</sup>
+						<span className="text-sm font-medium  font-sans uppercase tracking-widest">{t("navbar.chiefMinister")}</span>
 					</div>
 				</div>
 
 				{/* Center Section */}
 				<div className="flex-1 flex justify-center">
 					<div className="text-center">
-						<span className="text-sm font-serif italic">The Official Website of</span>
-						<div className="text-xl font-bold font-serif tracking-wider">Nashik Rural Police</div>
+						<span className="text-sm font-serif italic">{t("navbar.officialWebsite")}</span>
+						<div className="text-xl font-bold font-serif tracking-wider">{t("navbar.nashikRuralPolice")}</div>
 					</div>
 				</div>
 
@@ -112,10 +117,33 @@ const Navbar: FC<NavbarProps> = ({}) => {
 				<div className="flex items-center space-x-8">
 					<div className="w-[1px] h-20 bg-white/20"></div>
 					<button onClick={toggleSearch}>
-						<Search
-							className="h-6 w-6 cursor-pointer"
-						/>
+						<Search className="h-6 w-6 cursor-pointer" />
 					</button>
+					<div className="w-[1px] h-20 bg-white/20"></div>
+
+					{/* Language Switcher */}
+					<div className="flex items-center space-x-2">
+						<Globe className="h-5 w-5 text-white/70" />
+						<div className="flex space-x-1">
+							<button
+								onClick={() => handleLanguageChange("en")}
+								className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
+									language === "en" ? "bg-white text-[#1A233B]" : "text-white/70 hover:text-white hover:bg-white/10"
+								}`}
+							>
+								EN
+							</button>
+							<button
+								onClick={() => handleLanguageChange("mr")}
+								className={`px-2 py-1 text-xs font-medium rounded transition-colors ${
+									language === "mr" ? "bg-white text-[#1A233B]" : "text-white/70 hover:text-white hover:bg-white/10"
+								}`}
+							>
+								मर
+							</button>
+						</div>
+					</div>
+
 					<div className="w-[1px] h-20 bg-white/20"></div>
 					<Image
 						src="/police_logo.png"
@@ -144,13 +172,13 @@ const Navbar: FC<NavbarProps> = ({}) => {
 								onClick={() => setIsMenuOpen(false)}
 							>
 								<X className="h-6 w-6 text-white" />
-								<span className="text-white font-medium">Close</span>
+								<span className="text-white font-medium">{t("navbar.close")}</span>
 							</div>
 							<div
 								className="flex items-center space-x-2 cursor-pointer"
 								onClick={toggleSearch}
 							>
-								<span className="text-white font-medium">Search</span>
+								<span className="text-white font-medium">{t("navbar.search")}</span>
 								<Search className="h-6 w-6 text-white" />
 							</div>
 						</div>
@@ -188,8 +216,13 @@ const Navbar: FC<NavbarProps> = ({}) => {
 						{/* Footer */}
 						<div className="p-6 border-t border-white/20">
 							<div className="flex justify-between items-center">
-								<Button className="bg-red-600 text-white px-6 py-3 font-medium hover:bg-red-700 transition-colors" onClick={() => window.open("tel:112", "_blank")}>Call 112 Now</Button>
-								<p className="text-white/70 text-sm">© 2024 Nashik Rural Police</p>
+								<Button
+									className="bg-red-600 text-white px-6 py-3 font-medium hover:bg-red-700 transition-colors"
+									onClick={() => window.open("tel:112", "_blank")}
+								>
+									{t("navbar.call112")}
+								</Button>
+								<p className="text-white/70 text-sm">{t("navbar.copyright")}</p>
 							</div>
 						</div>
 					</motion.div>
@@ -211,13 +244,13 @@ const Navbar: FC<NavbarProps> = ({}) => {
 						<div className="flex justify-between items-center p-6">
 							<div className="flex items-center space-x-2 cursor-pointer">
 								<Menu className="h-6 w-6 text-white" />
-								<span className="text-white font-medium">Menu</span>
+								<span className="text-white font-medium">{t("navbar.menu")}</span>
 							</div>
 							<div
 								className="flex items-center space-x-2 cursor-pointer"
 								onClick={() => setIsSearchOpen(false)}
 							>
-								<span className="text-white font-medium">Close</span>
+								<span className="text-white font-medium">{t("navbar.close")}</span>
 								<X className="h-6 w-6 text-white" />
 							</div>
 						</div>
@@ -227,14 +260,14 @@ const Navbar: FC<NavbarProps> = ({}) => {
 							<div className="w-full max-w-2xl text-center">
 								<input
 									type="text"
-									placeholder="Type Your Search..."
+									placeholder={t("navbar.searchPlaceholder")}
 									value={searchQuery}
 									onChange={(e) => setSearchQuery(e.target.value)}
 									onKeyPress={handleKeyPress}
 									className="w-full bg-transparent text-white text-4xl font-serif placeholder:text-white/60 placeholder:italic text-center outline-none border-none"
 								/>
 								<div className="w-full h-px bg-white/60 mt-4 mb-8"></div>
-								<p className="text-white font-bold text-lg">PRESS ENTER TO SEARCH</p>
+								<p className="text-white font-bold text-lg">{t("navbar.pressEnter")}</p>
 							</div>
 						</div>
 					</motion.div>

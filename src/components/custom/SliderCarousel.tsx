@@ -3,10 +3,12 @@
 import { FC, useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { Roboto_Serif } from "next/font/google";
+import { useTranslations } from "@/hooks/useTranslations";
+
 interface CarouselSlide {
 	id: number;
-	title: string;
-	subtitle: string;
+	titleKey: string;
+	subtitleKey: string;
 	image: string;
 }
 
@@ -15,29 +17,30 @@ const robotoSerif = Roboto_Serif({
 	subsets: ["latin"],
 });
 
-const slides: CarouselSlide[] = [
-	{
-		id: 1,
-		title: "HONORING",
-		subtitle: "OUR VETS",
-		image: "/carousel/1.png",
-	},
-	{
-		id: 2,
-		title: "SERVING",
-		subtitle: "OUR COMMUNITY",
-		image: "/carousel/2.png",
-	},
-	{
-		id: 3,
-		title: "PROTECTING",
-		subtitle: "OUR FUTURE",
-		image: "/carousel/3.png",
-	},
-];
-
 const SliderCarousel: FC = () => {
 	const [currentSlide, setCurrentSlide] = useState(0);
+	const { t } = useTranslations();
+
+	const slides: CarouselSlide[] = [
+		{
+			id: 1,
+			titleKey: "carousel.slides.slide1.title",
+			subtitleKey: "carousel.slides.slide1.subtitle",
+			image: "/carousel/1.png",
+		},
+		{
+			id: 2,
+			titleKey: "carousel.slides.slide2.title",
+			subtitleKey: "carousel.slides.slide2.subtitle",
+			image: "/carousel/2.png",
+		},
+		{
+			id: 3,
+			titleKey: "carousel.slides.slide3.title",
+			subtitleKey: "carousel.slides.slide3.subtitle",
+			image: "/carousel/3.png",
+		},
+	];
 
 	useEffect(() => {
 		const timer = setInterval(() => {
@@ -77,8 +80,8 @@ const SliderCarousel: FC = () => {
 			{/* Content */}
 			<div className="relative z-10 flex flex-col justify-center items-center h-full text-white">
 				<div className="text-center space-y-4 animate-fade-in">
-					<h1 className={`text-6xl ${robotoSerif.className} font-bold tracking-wider`}>{slides[currentSlide].title}</h1>
-					<h2 className={`text-5xl ${robotoSerif.className} font-bold tracking-wider`}>{slides[currentSlide].subtitle}</h2>
+					<h1 className={`text-6xl ${robotoSerif.className} font-bold tracking-wider`}>{t(slides[currentSlide].titleKey)}</h1>
+					<h2 className={`text-5xl ${robotoSerif.className} font-bold tracking-wider`}>{t(slides[currentSlide].subtitleKey)}</h2>
 				</div>
 			</div>
 
